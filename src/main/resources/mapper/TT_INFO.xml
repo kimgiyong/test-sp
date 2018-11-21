@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.test.sp.TTINFO">
+ 	<select id="selectTTINFOList" resultType="com.test.sp.vo.TtInfo" parameterType="com.test.sp.vo.TtInfo">
+ 		select * from bdi.tt_info
+ 	</select>
+ 	<select id="selectTTINFO" resultType="com.test.sp.vo.TtInfo" parameterType="int">
+ 		select * from bdi.tt_info
+ 		where tnum=#{tnum}
+ 	</select>
+ 	<insert id="insertTTINFO" parameterType="com.test.sp.vo.TtInfo">
+ 		insert into bdi.tt_info(tname, tage)
+ 		values(#{tname},#{tage})
+ 	</insert>
+ 	<update id="updateTTINFO" parameterType="com.test.sp.vo.TtInfo">
+ 		update bdi.tt_info
+ 		<set>
+ 			<if test="tname!=null">tname = #{tname},</if>
+ 			<if test="tage!=null">tage = #{tage},</if>
+ 		</set>
+ 		where tnum = #{tnum}
+ 	</update>
+ 	<delete id="deleteTTINFO" parameterType="int">
+ 		delete from bdi.tt_info
+ 		where tnum = #{tnum}
+ 	</delete>
+ </mapper>
+ 
